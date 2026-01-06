@@ -1,0 +1,10 @@
+[project]
+name = "test-asssessment"
+version = "0.9"
+description = "DevOps Test Assesment, Vadim Tsarfin, 2026"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]",
+    "prometheus-fastapi-instrumentator>=7.1.0",
+]

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-assessment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lta
+  template:
+    metadata:
+      labels:
+        app: lta
+    spec:
+      containers:
+        - name: lta
+          image: test-assessment:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: token-secret
+                  key: TOKEN
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
