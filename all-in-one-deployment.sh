@@ -3,8 +3,9 @@ VERSION=v0.94
 ENV=prod
 PORT=30080
 TOKEN=lampas
+IMAGE=test-assignment
 uv sync
-docker build . -t $(basename $PWD):$VERSION
+docker build . -t $IMAGE:$VERSION
 kubectl config use-context docker-desktop
 kubectl delete ns lta-$ENV
 kubectl apply -k k8s/kustomize/overlays/$ENV
