@@ -8,20 +8,20 @@ resources:
 namespace: lta-dev
 
 images:
-  - name: test-assessment
+  - name: test-assignment
     newTag: v0.94
 
 replicas:
   - count: 2
-    name: test-assessment
+    name: test-assignment
 labels:
   - includeSelectors: true
     pairs:
       app.kubernetes.io/managed-by: kustomize
-      app.kubernetes.io/name: test-assessment
+      app.kubernetes.io/name: test-assignment
       env: dev
 patches:
   - target:
       kind: Service
-      name: test-assessment
+      name: test-assignment
     path: patch-svc-nodeport.yaml

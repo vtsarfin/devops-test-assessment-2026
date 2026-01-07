@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-assessment
+  name: test-assignment
 spec:
   replicas: 2
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: lta
-          image: test-assessment:latest
+          image: test-assignment:latest
           imagePullPolicy: IfNotPresent
           env:
             - name: TOKEN

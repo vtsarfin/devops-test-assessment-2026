@@ -1,8 +1,6 @@
-# DevOps Test Assessment Project
+# DevOps Test Assignment Project
 
 ## Vadim Tsarfin, January 2026
-
-# DevOps Test Assessment (2026)
 
 This repo contains my solution for the DevOps homework assignment.
 My goal was to ship a small web API as a container, run it on Kubernetes, and keep it easy to build, run, and test.
@@ -31,7 +29,7 @@ My goal was to ship a small web API as a container, run it on Kubernetes, and ke
 ### Container
 
 - **Docker-desktop**
-  - Just fast and simple for test Assessment; nothing specific was used.
+  - Just fast and simple for test assignment; nothing specific was used.
   - Same artifact for local runs and Kubernetes.
 
 ### Kubernetes
@@ -55,16 +53,16 @@ My goal was to ship a small web API as a container, run it on Kubernetes, and ke
 ### 2 Clone the repo and install deps
 
 ```bash
-git clone git@github.com:vtsarfin/devops-test-assessment-2026.git
-cd devops-test-assessment-2026
+git clone git@github.com:vtsarfin/devops-test-assignment-2026.git
+cd devops-test-assignment-2026
 uv sync
 ```
 
 ### 3 Build the image and run it locally
 
 ```bash
-docker build . -t test-assessment:v0.94
-docker run -e "TOKEN=lampas" --rm -d -p 9000:80 test-assessment:v0.94
+docker build . -t test-assignment:v0.94
+docker run -e "TOKEN=lampas" --rm -d -p 9000:80 test-assignment:v0.94
 ```
 
 Smoke test (see detailed endpoints description below):
@@ -104,8 +102,8 @@ The output has to be like:
 ```
 namespace/lta-prod created
 secret/token-secret created
-service/test-assessment created
-deployment.apps/test-assessment created
+service/test-assignment created
+deployment.apps/test-assignment created
 ```
 
 Check deployment's readiness :
@@ -118,7 +116,7 @@ Normal output is like:
 
 ```
 NAME              READY   UP-TO-DATE   AVAILABLE   AGE
-test-assessment   3/3     3            3           3m49s
+test-assignment   3/3     3            3           3m49s
 ```
 
 Check out all the resources deployed:
@@ -131,18 +129,18 @@ Output:
 
 ```
 NAME                                   READY   STATUS    RESTARTS   AGE
-pod/test-assessment-84dd76445b-6xhnm   1/1     Running   0          6m18s
-pod/test-assessment-84dd76445b-7t25z   1/1     Running   0          6m18s
-pod/test-assessment-84dd76445b-rdvhp   1/1     Running   0          6m18s
+pod/test-assignment-84dd76445b-6xhnm   1/1     Running   0          6m18s
+pod/test-assignment-84dd76445b-7t25z   1/1     Running   0          6m18s
+pod/test-assignment-84dd76445b-rdvhp   1/1     Running   0          6m18s
 
 NAME                      TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
-service/test-assessment   NodePort   10.101.5.184   <none>        80:30080/TCP   6m18s
+service/test-assignment   NodePort   10.101.5.184   <none>        80:30080/TCP   6m18s
 
 NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/test-assessment   3/3     3            3           6m18s
+deployment.apps/test-assignment   3/3     3            3           6m18s
 
 NAME                                         DESIRED   CURRENT   READY   AGE
-replicaset.apps/test-assessment-84dd76445b   3         3         3       6m18s
+replicaset.apps/test-assignment-84dd76445b   3         3         3       6m18s
 ```
 
 ## Workload Functionality
